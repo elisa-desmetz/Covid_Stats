@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="country"
+            type="com.example.covidstats.models.country.Country" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:onClickForDetails="@{country.type}"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/textView_plant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView_family"
+            app:layout_constraintStart_toEndOf="@+id/imageView_plant"
+            app:layout_constraintTop_toTopOf="@+id/imageView_plant"
+            android:text="@{plant.scientificName}"
+            tools:text="Name" />
+
+        <ImageView
+            android:id="@+id/imageView_plant"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            imageUrl="@{plant.imageUrl}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textView_family"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Family"
+            android:textStyle="italic"
+            android:text="@{plant.family}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView_plant"
+            app:layout_constraintStart_toStartOf="@+id/textView_plant_name"
+            app:layout_constraintTop_toBottomOf="@+id/textView_plant_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
